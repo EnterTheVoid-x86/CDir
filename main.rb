@@ -1,7 +1,7 @@
 def main # wrapped all the code into a main class
   puts "Welcome to CDir."
   sleep 0.2
-  puts "v0.1a"
+  puts "v0.2a"
   sleep 3
   system ("gem install fileutils > /dev/null")
   print "Please wait while the script is starting."
@@ -25,7 +25,7 @@ def main # wrapped all the code into a main class
   if File.directory?(dirname)
     puts "Select the action you want to do.\n"
     sleep 1
-    puts "(1) Delete dir (2) Rename directory (3) Create new folder inside dir\n"
+    puts "(1) Delete dir (2) Rename directory (3) Create new folder inside dir\n (4) Move folder"
     input = gets.to_i
     if input == 1
       puts "Deleting directory...\n"
@@ -46,6 +46,11 @@ def main # wrapped all the code into a main class
             FileUtils.mkdir_p(inp4)
             puts "Directory created."
             load "resume.rb"
+          elsif input == 4
+            puts "Where do you want to move this folder?"
+            inp5 == gets.chomp
+            FileUtils.mv dirname, inp5
+            puts "Moved directory succesfully."
           else
             puts "Sorry, that wasn't a valid option. Please try again.\n"
             sleep 3
@@ -53,6 +58,5 @@ def main # wrapped all the code into a main class
           end
         end
       end
-    
 main
 # EOF
