@@ -8,7 +8,7 @@ dirchoice = File.dirname(dirname)
 if File.directory?(dirname)
   puts "Select the action you want to do.\n"
   sleep 1
-  puts "(1) Delete dir (2) Rename directory (3) Create new folder inside dir\n"
+  puts "(1) Delete dir (2) Rename directory (3) Create new folder inside dir (4) Move directory (5) Copy directory\n"
   input = gets.to_i
   if input == 1
     puts "Deleting directory...\n"
@@ -31,6 +31,18 @@ if File.directory?(dirname)
             FileUtils.mkdir_p(inp4)
             puts "Directory created."
             load "resume.rb"
+             elsif input == 4
+            puts "Where do you want to move this folder?"
+            inp5 == gets.chomp
+            FileUtils.mv dirname, inp5
+            puts "Moved directory succesfully."
+            load "resume.rb"
+            elsif input == 5
+              puts "Where do you want to copy the folder to?"
+              inp6 = gets.chomp
+              FileUtils.cp_r dirname, inp6
+              puts "Directory copied succesfully."
+              load "resume.rb"
           else
             puts "Sorry, that wasn't a valid option. Please try again.\n"
             sleep 3
